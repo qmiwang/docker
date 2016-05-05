@@ -16,10 +16,13 @@ RUN apt-get install -y \
 
 # install ipython
 # install jupyter
-RUN pip install ipython jupyter 
-RUN pip install numpy scipy 
-RUN pip install scikit-image
-RUN pip install matplotlib
+RUN pip install \
+  ipython \
+  jupyter \
+  numpy \
+  scipy \
+  scikit-image \
+  matplotlib
 
 # expose 8888 as jupyter's default
 EXPOSE 8888
