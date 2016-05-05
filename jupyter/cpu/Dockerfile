@@ -6,9 +6,23 @@ ENV REFRESHED_AT 2016-05-05
 RUN apt-get update && apt-get install -y python-pip
 RUN pip install --upgrade pip
 
+RUN apt-get install -y \
+  git \
+  libopenblas-dev \
+  libopencv-dev \
+  python-dev \
+  python-numpy \
+  python-setuptools
+
 # install ipython
 # install jupyter
-RUN pip install ipython jupyter numpy scipy matplotlib scikit-image
+RUN pip install \
+  ipython \
+  jupyter \
+  numpy \
+  scipy \
+  scikit-image \
+  matplotlib
 
 # expose 8888 as jupyter's default
 EXPOSE 8888
