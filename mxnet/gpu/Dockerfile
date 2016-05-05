@@ -22,5 +22,5 @@ RUN apt-get install -y python-numpy wget unzip graphviz
 # RUN cd ~/mxnet/python && python setup.py install
 ENV PYTHONPATH /mxnet/python
 RUN pip install graphviz
-RUN pip uninstall scikit-image
+RUN pip uninstall -y scikit-image
 RUN pip install -U scikit-image
