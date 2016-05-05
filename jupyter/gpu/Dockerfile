@@ -21,9 +21,8 @@ RUN pip install \
   jupyter \
   numpy \
   scipy \
-  scikit-image \
   matplotlib
-
+RUN pip install -U scikit-image
 # expose 8888 as jupyter's default
 EXPOSE 8888
 
