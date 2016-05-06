@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
   python-dev \
   python-numpy \
   python-setuptools
- 
+
 # install the core library
 # Clone MXNet repo and move into it
 RUN cd /root && git clone --recursive https://github.com/dmlc/mxnet && cd mxnet && \
@@ -23,7 +23,7 @@ RUN cd /root && git clone --recursive https://github.com/dmlc/mxnet && cd mxnet 
   sed -i 's/USE_CUDA_PATH = NONE/USE_CUDA_PATH = \/usr\/local\/cuda/g' config.mk && \
 # Set cuDNN flag
 # TODO: Change when cuDNN v4 supported
-  sed -i 's/USE_CUDNN = 0/USE_CUDNN = 0/g' config.mk && \
+  sed -i 's/USE_CUDNN = 0/USE_CUDNN = 1/g' config.mk && \
 # Make 
   make -j"$(nproc)"
 
