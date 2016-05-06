@@ -36,4 +36,5 @@ RUN cd /root/mxnet/python && python setup.py install
 RUN apt-get install -y python-numpy wget unzip graphviz
 # RUN cd ~/mxnet/python && python setup.py install
 ENV PYTHONPATH /mxnet/python
+ENV MXNET_EXEC_INPLACE_GRAD_SUM_CAP 512000000
 RUN pip install graphviz
