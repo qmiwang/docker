@@ -24,7 +24,7 @@ RUN cd /root && git clone --recursive https://github.com/dmlc/mxnet && cd mxnet 
 # Set cuDNN flag
 # TODO: Change when cuDNN v4 supported
   sed -i 's/USE_CUDNN = 0/USE_CUDNN = 1/g' config.mk && \
-# Make 
+# Make
   make -j"$(nproc)"
 
 # Install Python package
@@ -34,5 +34,5 @@ RUN cd /root/mxnet/python && python setup.py install
 # python pakcage
 # graphviz ensures the visualization of mx.viz.plot_network in ipython notebook
 RUN apt-get install -y python-numpy wget unzip graphviz
-ENV MXNET_EXEC_INPLACE_GRAD_SUM_CAP 512000000
+ENV MXNET_EXEC_INPLACE_GRAD_SUM_CAP 888000000
 RUN pip install graphviz
