@@ -1,18 +1,22 @@
 FROM ubuntu:14.04
 MAINTAINER Jianyong Wang <wangjianyongscu@gmail.com>
 
-ENV REFRESHED_AT 2016-05-05
+ENV REFRESHED_AT 2016-05-10
 
 RUN apt-get update && apt-get install -y python-pip
 RUN pip install --upgrade pip
 
 RUN apt-get install -y \
+  build-essential \
   git \
   libopenblas-dev \
   libopencv-dev \
   python-dev \
   python-numpy \
-  python-setuptools
+  python-scipy \
+  python-setuptools \
+  wget \
+  unzip
 
 # install ipython
 # install jupyter
@@ -25,8 +29,10 @@ RUN pip install \
 RUN pip install -U scikit-image
 # expose 8888 as jupyter's default
 EXPOSE 8888
-# expose 6006 as tensorboard's default
 EXPOSE 6006
+EXPOSE 7777
+EXPOSE 9999
+
 # Set a seperated workspace as working directory
 WORKDIR /root/workspace
 # Optionally expose the workspace to the host
@@ -36,6 +42,11 @@ VOLUME ["/root/workspace"]
 ENV TINI_VERSION v0.8.4
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
+
+# Unset any password for jupyter by default
+RUN mkdir -p ~/.jupyter && echo "c.NotebookApp.token = u''" >> ~/.jupyter/jupyter_notebook_config.py
+
+ENV SHELL bash
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 # Run ipython defaultly
