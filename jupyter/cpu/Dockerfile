@@ -25,7 +25,8 @@ RUN pip install \
 RUN pip install -U scikit-image
 # expose 8888 as jupyter's default
 EXPOSE 8888
-
+# expose 6006 as tensorboard's default
+EXPOSE 6006
 # Set a seperated workspace as working directory
 WORKDIR /root/workspace
 # Optionally expose the workspace to the host
