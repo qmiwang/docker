@@ -51,4 +51,4 @@ ENV SHELL bash
 ENTRYPOINT ["/usr/bin/tini", "--"]
 # Run ipython defaultly
 # Run notebook for ipython defaultly
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888","--no-browser"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888","--no-browser","--allow-root"]
